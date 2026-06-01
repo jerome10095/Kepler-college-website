@@ -135,3 +135,21 @@ class Product {
         return discountedPrice.toFixed(2);
     }
 }
+
+// 2. Create a class User with properties username (string), email (string), and methods:
+    // - `getProfile()`: Returns a string representation of the user's profile (username and email).
+    // - `updateEmail(newEmail)`: Updates the user's email address.
+class User {
+    constructor(username, email) {
+        this.username = username;
+        this.email = email;
+    }
+
+    getProfile() {
+        return `User: ${this.username}, Email: ${this.email}`;
+    }
+
+    updateEmail(newEmail) {
+        this.email = newEmail;
+    }
+}
