@@ -77,3 +77,34 @@ h1 {
     font-family: Arial, Helvetica, sans-serif;
     padding: 20px;
 }
+
+// the following code is for ES6 practice
+
+/* 1. Your task to complete this challenge is to write a function that formats a duration, given as a number of seconds, in a human-friendly way.
+
+    The function must accept a non-negative integer. If it is zero, it just returns "now". Otherwise, the duration is expressed as a combination of years, days, hours, minutes, and seconds.
+
+    It is much easier to understand with an example: */
+
+function formatDuration(seconds) {
+    if (seconds === 0) {
+        return "now";
+    }
+    const units = [
+        { name: "year", value: 365 * 24 * 60 * 60 },
+        { name: "day", value: 24 * 60 * 60 },
+        { name: "hour", value: 60 * 60 },
+        { name: "minute", value: 60 },
+        { name: "second", value: 1 }
+    ];
+    const parts = [];
+    for (const unit of units) {
+        const count = Math.floor(seconds / unit.value);
+        if (count > 0) {
+            parts.push(count + " " + unit.name + (count > 1 ? "s" : ""));
+            seconds -= count * unit.value;
+        }
+    }
+    return parts.join(", ");
+}
+
