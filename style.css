@@ -153,3 +153,32 @@ class User {
         this.email = newEmail;
     }
 }
+
+
+// 3. Create a class BankAccount with properties accountNumber (string), balance (number), and methods:
+    // - `getBalance()`: Returns the current balance of the account.
+    // - `deposit(amount)`: Adds a specified amount to the account balance.
+    // - `withdraw(amount)`: Subtracts a specified amount from the account balance if sufficient funds are available, otherwise returns an error message.
+class BankAccount {
+    constructor(accountNumber, balance) {
+        this.accountNumber = accountNumber;
+        this.balance = balance;
+    }
+
+    getBalance() {
+        return this.balance;
+    }
+
+    deposit(amount) {
+        this.balance += amount;
+    }
+
+    withdraw(amount) {
+        if (this.balance >= amount) {
+            this.balance -= amount;
+            return "Withdrawal successful.";
+        } else {
+            return "Insufficient funds.";
+        }
+    }
+}
