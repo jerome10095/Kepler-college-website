@@ -1,48 +1,47 @@
 * {
     margin: 0;
     padding: 0;
-    box-sizing: content-box;
-    
+    box-sizing: border-box;
 }
 
-.parent{
+.parent {
     display: flex;
-    height: 150px;
-    width: 100%;
-    gap: 30px;
-   
-
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 4rem;
+    background-color: white;
 }
 
-.col{
-    width: 200px;
-    height: 150px;
-
+.col {
+    width: 150px;
+    height: auto;
 }
+
+/* Navigation links */
 .nav-bar {
     display: flex;
+    align-items: center;
     list-style: none;
-    gap: 50px;
-    justify-content: right;
-    padding: 30px;
-
+    gap: 2rem;
+    flex: 1;
+    justify-content: center;
 }
 
-li {
-    font-size: 20px;
-    font-family: Arial, Helvetica, sans-serif;
-    cursor: pointer;
-    width: 100px;
+.nav-bar li a {
+    text-decoration: none;
+    color: black;
+    font-size: 2rem;
+    white-space: nowrap;
 }
+
+/* Icons */
 .nav-icons {
     display: flex;
-    width: 1500px;
-    height: 20px;
-    padding: 45px;
-    gap: 30px;
-    margin-left: auto;
-
+    gap: 1.5rem;
+    font-size: 1.2rem;
+    cursor: pointer;
 }
+
 
 .first-block{
     height: 5000px;
@@ -51,8 +50,19 @@ li {
     flex-direction: column;
     align-items: center;
     gap: 30px;
-    background-color: rgb(15, 12, 63);
     color: white;
+    .first-block {
+    background: url("Images/hero-section-1-scaled.jpeg") no-repeat center center / cover;
+    height: 600px;
+    .first-block {
+    background: url("Images/hero-section-1-scaled.jpeg") no-repeat center center / cover;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 0 5rem;
+    color: white;
+}
+}
 }
 
 .block-1 {
@@ -78,107 +88,3 @@ h1 {
     padding: 20px;
 }
 
-// the following code is for ES6 practice
-
-/* 1. Your task to complete this challenge is to write a function that formats a duration, given as a number of seconds, in a human-friendly way.
-
-    The function must accept a non-negative integer. If it is zero, it just returns "now". Otherwise, the duration is expressed as a combination of years, days, hours, minutes, and seconds.
-
-    It is much easier to understand with an example: */
-
-function formatDuration(seconds) {
-    if (seconds === 0) {
-        return "now";
-    }
-    const units = [
-        { name: "year", value: 365 * 24 * 60 * 60 },
-        { name: "day", value: 24 * 60 * 60 },
-        { name: "hour", value: 60 * 60 },
-        { name: "minute", value: 60 },
-        { name: "second", value: 1 }
-    ];
-    const parts = [];
-    for (const unit of units) {
-        const count = Math.floor(seconds / unit.value);
-        if (count > 0) {
-            parts.push(count + " " + unit.name + (count > 1 ? "s" : ""));
-            seconds -= count * unit.value;
-        }
-    }
-    return parts.join(", ");
-}
-
-// 2. Write a function that takes an array of numbers and returns the sum of the two lowest positive numbers.
-
-function sumTwoSmallestNumbers(numbers) {
-    const positiveNumbers = numbers.filter(num => num > 0);
-    positiveNumbers.sort((a, b) => a - b);
-    return positiveNumbers[0] + positiveNumbers[1];
-}
-
-/* 1. Create a class Product with properties name (string), price (number), and methods:
-    - `getDetails()`: Returns a string representation of the product details (name and price).
-    - `applyDiscount(discount)`: Applies a discount (percentage) to the product's price and returns the discounted price.*/
-
-class Product {
-    constructor(name, price) {
-        this.name = name;
-        this.price = price;
-    }
-
-    getDetails() {
-        return `Product: ${this.name}, Price: $${this.price.toFixed(2)}`;
-    }
-
-    applyDiscount(discount) {
-        const discountedPrice = this.price * (1 - discount / 100);
-        return discountedPrice.toFixed(2);
-    }
-}
-
-// 2. Create a class User with properties username (string), email (string), and methods:
-    // - `getProfile()`: Returns a string representation of the user's profile (username and email).
-    // - `updateEmail(newEmail)`: Updates the user's email address.
-class User {
-    constructor(username, email) {
-        this.username = username;
-        this.email = email;
-    }
-
-    getProfile() {
-        return `User: ${this.username}, Email: ${this.email}`;
-    }
-
-    updateEmail(newEmail) {
-        this.email = newEmail;
-    }
-}
-
-
-// 3. Create a class BankAccount with properties accountNumber (string), balance (number), and methods:
-    // - `getBalance()`: Returns the current balance of the account.
-    // - `deposit(amount)`: Adds a specified amount to the account balance.
-    // - `withdraw(amount)`: Subtracts a specified amount from the account balance if sufficient funds are available, otherwise returns an error message.
-class BankAccount {
-    constructor(accountNumber, balance) {
-        this.accountNumber = accountNumber;
-        this.balance = balance;
-    }
-
-    getBalance() {
-        return this.balance;
-    }
-
-    deposit(amount) {
-        this.balance += amount;
-    }
-
-    withdraw(amount) {
-        if (this.balance >= amount) {
-            this.balance -= amount;
-            return "Withdrawal successful.";
-        } else {
-            return "Insufficient funds.";
-        }
-    }
-}
